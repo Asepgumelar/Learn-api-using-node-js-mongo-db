@@ -1,4 +1,5 @@
 module.exports = (app) => {
+    const products = require('../controllers/product.js');
     const customers = require('../controllers/customer.js');
     const orders = require('../controllers/order.js');
     const order_details = require('../controllers/order_detail.js');
@@ -20,5 +21,11 @@ module.exports = (app) => {
     app.get('/order_details/:odId', order_details.findOne);
     app.put('/order_details/:odId', order_details.update);
     app.delete('/order_details/:odId', order_details.delete);
+
+    app.post('/products', products.create);
+    app.get('/products', products.findAll);
+    app.get('/products/:custId', products.findOne);
+    app.put('/products/:custId', products.update);
+    app.delete('/products/:custId', products.delete);
 
 }
